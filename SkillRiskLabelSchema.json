@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ripplelogic.org/schemas/skillrisklabel-v0.1.json",
+  "title": "RippleLogic Skill Risk Label v0.1",
+  "type": "object",
+  "required": [
+    "skill_name",
+    "permissions_requested",
+    "data_touched",
+    "blast_radius",
+    "reversibility",
+    "risk_level",
+    "recommended_tier",
+    "sandbox_recommendation",
+    "confirmation_required",
+    "user_warnings"
+  ],
+  "properties": {
+    "skill_name": { "type": "string" },
+    "permissions_requested": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "data_touched": {
+      "type": "string",
+      "enum": ["public", "personal", "secrets", "regulated", "unknown"]
+    },
+    "blast_radius": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "unknown"]
+    },
+    "reversibility": {
+      "type": "string",
+      "enum": ["easy", "hard", "irreversible", "unknown"]
+    },
+    "risk_level": {
+      "type": "string",
+      "enum": ["low", "medium", "high", "critical"]
+    },
+    "recommended_tier": { "type": "string" },
+    "sandbox_recommendation": {
+      "type": "string",
+      "enum": ["optional", "recommended", "required"]
+    },
+    "confirmation_required": {
+      "type": "string",
+      "enum": ["optional", "recommended", "required"]
+    },
+    "user_warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "maxItems": 6
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

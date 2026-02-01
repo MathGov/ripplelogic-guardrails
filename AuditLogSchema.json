@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ripplelogic.org/schemas/auditlog-v0.1.json",
+  "title": "RippleLogic Guardrails Audit Log Entry v0.1",
+  "type": "object",
+  "required": [
+    "ts",
+    "request",
+    "classification",
+    "gate_decision",
+    "reason",
+    "constraints",
+    "tools",
+    "result"
+  ],
+  "properties": {
+    "ts": {
+      "type": "string",
+      "description": "ISO 8601 timestamp including timezone"
+    },
+    "channel": {
+      "type": "string",
+      "description": "Where the request came from (optional)"
+    },
+    "request": {
+      "type": "string",
+      "description": "Short summary of user intent, no secrets"
+    },
+    "classification": {
+      "type": "object",
+      "required": ["capability", "data_sensitivity", "blast_radius", "reversibility"],
+      "properties": {
+        "capability": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "data_sensitivity": {
+          "type": "string",
+          "enum": ["public", "personal", "secrets", "regulated", "unknown"]
+        },
+        "blast_radius": {
+          "type": "string",
+          "enum": ["low", "medium", "high", "unknown"]
+        },
+        "reversibility": {
+          "type": "string",
+          "enum": ["easy", "hard", "irreversible", "unknown"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "gate_decision": {
+      "type": "string",
+      "enum": ["ALLOW", "ALLOW_WITH_CONSTRAINTS", "BLOCK"]
+    },
+    "reason": {
+      "type": "string"
+    },
+    "constraints": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "status": { "type": "string", "enum": ["success", "failure", "not_run"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "result": {
+      "type": "string",
+      "description": "High-level outcome, no secrets"
+    },
+    "followups": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "skill_context": {
+      "type": "string",
+      "description": "Active workflow or skill name if applicable"
+    }
+  },
+  "additionalProperties": true
+}
