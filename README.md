@@ -33,8 +33,9 @@ This spec pack contains:
 - **Latest Release**: [v0.1](https://github.com/MathGov/ripplelogic-guardrails/releases/tag/v0.1)
 - **ZIP Package**: Download from GitHub Releases
 
-### Website Mirror
-- **WordPress Pack**: [https://ripplelogic.org/wp-content/uploads/2026/02/RippleLogic-Guardrails-v0.1.zip](https://ripplelogic.org/wp-content/uploads/2026/02/RippleLogic-Guardrails-v0.1.zip)
+### Download and status
+- Use the fixed [GitHub v0.1 release assets](https://github.com/MathGov/ripplelogic-guardrails/releases/tag/v0.1). The former WordPress ZIP mirror is retired.
+- This is a **historical public-draft companion**, not a claim of conformance with Core v13.0. See the [current framework](https://mathgov.github.io/ripple-logic/) for governing sources.
 
 ## Integrity Verification
 
